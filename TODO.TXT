@@ -1,0 +1,6 @@
+Incorporate NPR API
+Get User profiles
+Login Authentication
+A way of associating users to neighborhoods
+Adding votes to Political News Pages & Blogs
+  

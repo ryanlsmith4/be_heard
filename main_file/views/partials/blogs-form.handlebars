@@ -1,0 +1,30 @@
+<!--views/partials/review-form.handlebars-->
+
+<fieldset class="container">
+  <legend>Edit Blog</legend>
+  <!-- TITLE -->
+  <p>
+    <label for="blog-title">Title</label><br>
+    <input id="blog-title" type="text" name="title" value="{{blog.title}}"/>
+  </p>
+
+  <!-- MOVIE TITLE -->
+  <p>
+    <label for="article-title">Blog Title</label><br>
+    <input id="article-title" type="text" name="articleTitle" value="{{blog.movieTitle}}" />
+  </p>
+
+  <!-- DESCRIPTION -->
+  <p>
+    <label for="blog-description">Description</label><br>
+    <textarea id="blog-description" name="description" rows="10" />{{blog.description}}</textarea>
+  </p>
+</fieldset>
+
+<style>
+    fieldset {
+        border: 1px solid rgb(255,232,57);
+        width: 400px;
+        float: left;
+    }
+</style>
