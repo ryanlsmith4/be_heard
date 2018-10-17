@@ -1,0 +1,30 @@
+<!-- views/blogs-index.handlebars -->
+    <div class="jumbotron">
+        <a class="btn btn-primary btn-lg btn-block" href="/blogs/new" role="button">New Community Event</a>
+        <hr class="my-4">
+        {{#each blogs}}
+            <h1 class="lead">
+                {{this.title}}
+            </h1>
+
+            <p>{{this.articleTitle}}</p>
+            <a class="btn btn-primary btn-lg" href="/blogs/view/{{this._id}}" role="button">Read Description</a>
+            <hr class="my-4">
+        {{/each}}
+    </div>
+
+
+    <style media="screen">
+        .responsive {
+            width: 75%;
+            height: auto;
+        }
+    </style>
+
+
+
+    <footer class="blog-footer">
+
+        <a href="#">Back to top</a>
+        </p>
+    </footer>

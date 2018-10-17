@@ -4,7 +4,7 @@ Be Heard's goal is to help people collaborate together to make positive impacts 
 
 ## Getting Started
 
-This project Will require knowledge of Javascript Node.js, Express.js, Handlebars, and the NPR API.
+This project Will require knowledge of Javascript Node.js, Express.js, Handlebars, and NewsAPI.
 
 ### Prerequisites
 
@@ -22,6 +22,6 @@ Install NPM, express, mongoDB, mongoose, and nodemon
 ## Acknowledgments
 
 * Make School
-* NPR
+* Powered By NewsAPI
 * Jacob Pease
 * YOU!

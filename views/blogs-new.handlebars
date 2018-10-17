@@ -1,0 +1,14 @@
+<!-- views/blogs-new.handlebars-->
+
+<form method="POST" action="/blogs/view/{{blog._id}}">
+
+    {{> blogs-form}}
+
+    <!-- BUTTON -->
+    <p>
+        <button type="submit" class="btn btn-primary btn-sm">Save Event</button>
+    </p>
+</form>
+<form method="GET" action="/">
+    <button type="cancel" class="btn btn-primary btn-sm">Cancel</button>
+</form>

@@ -1,0 +1,35 @@
+<!-- views/blogs-show.handlebars -->
+<div class="nice-buttons">
+    <h1>{{blog.title}}</h1>
+    <h2>{{blog.articleTitle}}</h2>
+    <p>{{blog.description}}</p>
+    <p>{{blog.dropDown}}</p>
+</div>
+
+    <p>
+        <form method="GET" action="/blogs/view/{{blog._id}}/edit">
+            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+        </form>
+    </p>
+
+    <!--Delete Button-->
+    <p>
+        <form method="POST" action="/blogs/view/{{blog._id}}?_method=DELETE">
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
+    </p>
+    <!-- CommunityBoard Button -->
+<p>
+    <form method="GET" action="/blogs/views/community/board">
+        <button type="submit" class="btn btn-primary btn-sm">Community Board</button>
+    </form>
+</p>
+
+<style>
+    .nice-buttons {
+        margin: auto;
+        width: 50%;
+        /* border: 3px solid green; */
+        padding: 10px;
+    }
+</style>

@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <hr class="my-4">
+    {{#each articles}}
+        <figure>
+        <a class="btn" href="{{this.url}}" role="button"><img src='{{this.urlToImage}}' class="responsive" alt="{{this.urlToImage}}"/></a>
+        </figure>
+        <h3 class="lead">
+            <li>{{this.title}}</li>
+        </h3>
+
+        <p>{{this.description}}</p>
+
+        <a class="btn btn-primary btn-lg" href="{{this.url}}" role="button">Read More</a>
+        <br><small>Courtesy of NewsAPI </small>
+        <hr class="my-4">
+    {{/each}}
+</div>
+
+<footer class="blog-footer">
+
+    <a href="#">Back to top</a>
+    </p>
+</footer>
+
+
+<style media="screen">
+    .responsive {
+        width: 75%;
+        height: auto;
+    }
+</style>
