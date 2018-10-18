@@ -16,11 +16,12 @@ const dateString = year + "-" + month + "-" + date;
 module.exports = function(app, Blog) {
 require('./auth')(app)
 
-    app.get('/blogs/views/community/board', (request, response) => {
+    app.get('/blogs/views/community/board', (req, res) => {
         Blog.find()
             .then(blogs => {
-                response.render('blogs-index', {
-                    blogs: blogs
+                res.render('blogs-index', {
+                    blogs: blogs,
+                    currentUser:req.user
                 });
             })
             .catch(err => {
@@ -40,9 +41,11 @@ require('./auth')(app)
             sortBy: 'popularity',
             page: 1
         }).then(response => {
-            console.log(response);
+            // console.log(currentUser)
+            currentUser = req.user;
             res.render('news-page', {
-                articles: response.articles
+                articles: response.articles,
+                currentUser
             });
         }).catch(console.error)
     });
@@ -69,6 +72,7 @@ require('./auth')(app)
 
 
     app.get('/blogs/view/:id/edit', (req, res) => {
+        currentUser : req.user
         Blog.findById(req.params.id, function(err, blog) {
             res.render('blogs-edit', {
                 blog: blog
@@ -80,7 +84,9 @@ require('./auth')(app)
     app.post('/blogs/view', (req, res) => {
         Blog.create(req.body).then((blog) => {
             console.log(blog);
+            currentUser : req.user
             res.redirect(`/blogs/view/${blog._id}`); // redirect to blogs/:id
+
         }).catch((err) => {
             console.log(err.message);
         })
@@ -91,6 +97,7 @@ require('./auth')(app)
         Blog.findByIdAndUpdate(req.params.id, req.body)
             .then(blog => {
                 res.redirect(`/blogs/view/${blog._id}`)
+                currentUser : req.user
             })
             .catch(err => {
                 console.log(err.message);
@@ -98,7 +105,9 @@ require('./auth')(app)
     })
 
     app.get('/blogs', (req, res) => {
+        currentUser : req.user
         res.render('blogs-index', {})
+        currentUser : req.user
     })
 
     /** Route for News articles
@@ -108,7 +117,7 @@ require('./auth')(app)
      **/
     app.get('/', (req, res) => {
         newsapi.v2.everything({
-            q: '+San Francisco, +California',
+            q: '+San Francisco, +California, +politics',
             sources: 'google-news, independent, politico, reddit-r-politics',
             domains: 'politico.com, google.com',
             from: 'dateStringLessAMonth',
@@ -117,15 +126,18 @@ require('./auth')(app)
             sortBy: 'relevancy',
             page: 1
         }).then(response => {
+            console.log(req.user);
             // console.log(response);
             res.render('news-articles', {
-                articles: response.articles
+                articles: response.articles,
+                currentUser : req.user
             });
         }).catch(console.error)
     });
 
     // Route for a new Blog
     app.get('/blogs/new', (req, res) => {
+        currentUser : req.user
         res.render('blogs-new', {});
     })
 
