@@ -6,12 +6,14 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-
+const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
+//     useNewUrlParser: true
+// };
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI ||' mongodb://localhost/contractor_proj', {
+mongoose.connect(dataBase, {
     useNewUrlParser: true
 });
-//This I required after the app = express()
+// //This I required after the app = express()
 // But before all other routes because it parses the data
 app.use(bodyParser.urlencoded({ extended: false}));
 
