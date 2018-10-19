@@ -1,4 +1,3 @@
-/* stylelint-disable selector-list-comma-newline-after */
 div .container {
     background-color: red;
 }
@@ -73,9 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   .h-md-250 { height: 250px; }
 }
 
-/*
- * Blog name and description
- */
+
 .blog-title {
   margin-bottom: 0;
   font-size: 2rem;
@@ -92,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Pagination */
+
 .blog-pagination {
   margin-bottom: 4rem;
 }
@@ -104,9 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
-/*
- * Blog posts
- */
+
 .blog-post {
   margin-bottom: 4rem;
 }
@@ -119,9 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #999;
 }
 
-/*
- * Footer
- */
+
 .blog-footer {
   padding: 2.5rem 0;
   color: #999;

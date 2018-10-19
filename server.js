@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
+//update with new MLAB URI
+const dataBase = process.env.mongodb:ryansmith:Milkshake12!@ds050077.mlab.com:50077/be_heard ||' mongodb://localhost/Be_heard';
 
 // const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
 //     useNewUrlParser: true
