@@ -1,7 +1,7 @@
 //models/blog.js
 //formally know as models/review.js
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/contractor_proj', {
+mongoose.connect(process.env.MONGODB_URI ||' mongodb://localhost/contractor_proj', {
     useNewUrlParser: true
 });
 const Schema = mongoose.Schema
