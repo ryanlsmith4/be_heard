@@ -5,6 +5,7 @@ const NewsAPI = require('newsapi');
 const config = require('../.env')
 const newsapi = new NewsAPI(config.config)
 const User = require('../models/user')
+
 const currentDate = new Date();
 // Super Excellent Date tool!
 const date = currentDate.getDate();
