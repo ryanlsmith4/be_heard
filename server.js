@@ -7,12 +7,11 @@ const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
+
+// const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
 //     useNewUrlParser: true
 // };
-const mongoose = require('mongoose');
-mongoose.connect(dataBase, {
-    useNewUrlParser: true
-});
+
 // //This I required after the app = express()
 // But before all other routes because it parses the data
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -40,6 +39,11 @@ app.set('view engine', 'handlebars');
 //
 
 module.exports = app;
+
+const mongoose = require('mongoose');
+mongoose.connect(dataBase, {
+    useNewUrlParser: true
+});
 
 const Blog = require('./models/blog');
 const Comment = require('./controllers/comments-controller')
