@@ -39,7 +39,6 @@ app.set('view engine', 'handlebars');
 //
 
 module.exports = app;
-
 const mongoose = require('mongoose');
 mongoose.connect(dataBase, {
     useNewUrlParser: true
