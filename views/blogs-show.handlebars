@@ -10,7 +10,7 @@
     <p>{{this.content}}</p>
     {{/each}}
 </div>
-
+{{#if currentUser}}
     <p>
         <form method="GET" action="/blogs/view/{{blog._id}}/edit">
             <button type="submit" class="btn btn-primary btn-sm">Edit</button>
@@ -23,14 +23,21 @@
             <button type="submit" class="btn btn-primary btn-sm">Delete</button>
         </form>
     </p>
+    {{else}}
     <!-- CommunityBoard Button -->
 <p>
     <form method="GET" action="/blogs/views/community/board">
         <button type="submit" class="btn btn-primary btn-sm">Community Board</button>
     </form>
 </p>
-
+{{/if}}
+<!--comments-->
+{{#if currentUser}}
 <form action="/blogs/view/{{blog.id}}/comments" method="POST">
+    {{else}}
+    <form action="/sign-up" method="get">
+        {{/if}}
+
    <textarea class='form-control' name="content" placeholder="Comment"></textarea>
    <div class="text-right">
      <button type="submit">Save</button>

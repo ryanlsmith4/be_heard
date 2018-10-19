@@ -11,17 +11,14 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI ||' mongodb://localhost/contractor_proj', {
     useNewUrlParser: true
 });
-
-
 //This I required after the app = express()
 // But before all other routes because it parses the data
-
 app.use(bodyParser.urlencoded({ extended: false}));
-//app.use(bodyParser.json())
 
 app.use(cookieParser());
+
 var checkAuth = (req, res, next) => {
-    console.log("checking authentication");
+
     if(typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
         req.user = null;
     } else {
@@ -32,7 +29,6 @@ var checkAuth = (req, res, next) => {
     next()
 }
 app.use(checkAuth);
-
 
 //override with POST having ?_method=DELETE or ?_method=put
 app.use(methodOverride('_method'));
@@ -46,7 +42,6 @@ module.exports = app;
 const Blog = require('./models/blog');
 const Comment = require('./controllers/comments-controller')
 require('./controllers/comments-controller.js')(app)
-
 const blogs = require('./controllers/routes')(app, Blog);
 
 

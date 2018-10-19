@@ -7,6 +7,7 @@ module.exports = function(app) {
 
     // CREATE Comment
     app.post('/blogs/view/:id/comments', function(req, res) {
+         currentUser: req.user
         console.log(req.body)
         // INSTANTIATE INSTANCE OF MODEL
         const comment = new Comment(req.body)
@@ -18,6 +19,8 @@ module.exports = function(app) {
             return blog.save()
         }).then((blog) => {
             res.redirect(`/blogs/view/${blog._id}`)
+            currentUser: req.user
+
         }).catch((err) => {
             console.log(err)
         })

@@ -16,14 +16,15 @@ const dateString = year + "-" + month + "-" + date;
 
 
 module.exports = function(app, Blog) {
-require('./auth')(app)
+    require('./auth')(app)
 
     app.get('/blogs/views/community/board', (req, res) => {
+        let currentUser = req.user;
         Blog.find()
             .then(blogs => {
                 res.render('blogs-index', {
                     blogs: blogs,
-                    currentUser:req.user
+                    currentUser
                 });
             })
             .catch(err => {
@@ -43,7 +44,6 @@ require('./auth')(app)
             sortBy: 'popularity',
             page: 1
         }).then(response => {
-            // console.log(currentUser)
             currentUser = req.user;
             res.render('news-page', {
                 articles: response.articles,
@@ -53,11 +53,13 @@ require('./auth')(app)
     });
 
     app.get('/blogs/view/:id', (req, res) => {
-        currentUser : req.user
+        let currentUser = req.user;
         Blog.findById(req.params.id).populate('comments').then((blog) => {
             res.render('blogs-show', {
-                blog: blog
+                blog: blog,
+                currentUser
             })
+
         }).catch((err) => {
             console.log(err.message);
         })
@@ -65,7 +67,6 @@ require('./auth')(app)
 
     // Delete route in  views/blogs-show.handlebars POST method
     app.delete('/blogs/view/:id', function(req, res) {
-        currentUser : req.user
         console.log("Delete Blog");
         Blog.findByIdAndRemove(req.params.id).then((blog) => {
             res.redirect('/');
@@ -76,10 +77,12 @@ require('./auth')(app)
 
 
     app.get('/blogs/view/:id/edit', (req, res) => {
-        currentUser : req.user
+        let currentUser = req.user;
         Blog.findById(req.params.id, function(err, blog) {
             res.render('blogs-edit', {
-                blog: blog
+                blog: blog,
+                currentUser
+
             });
         })
     })
@@ -90,20 +93,29 @@ require('./auth')(app)
     //     }
     // })
     // Route for a new Blog(re,res,blogs this is working?)
-    app.get('/blogs/new', (req, res, blogs) => {
+    app.get('/blogs/new', (req, res) => {
         let currentUser = req.user;
-        // currentUser : req.user
-        res.render('blogs-new', { blogs, currentUser });
+        res.render('blogs-new', {
+            currentUser
+        });
     })
-
-
+    // CREATE
+    // app.post('/blogs/view', (req, res) => {
+    //   if (req.user) {
+    //     var blog = new Blog(req.body);
+    //
+    //     blog.save(function (err, post) {
+    //       return res.redirect(`/blogs/view/${blog._id}`);
+    //     })
+    //   } else {
+    //       console.log('here');
+    //     return res.redirect('sign-up'); // UNAUTHORIZED
+    //   }
+    // });
+    //CREATE
     app.post('/blogs/view', (req, res) => {
-        currentUser : req.user
         Blog.create(req.body).then((blog) => {
-            console.log(blog);
-            currentUser : req.user
             res.redirect(`/blogs/view/${blog._id}`); // redirect to blogs/:id
-
         }).catch((err) => {
             console.log(err.message);
         })
@@ -111,26 +123,28 @@ require('./auth')(app)
 
 
     app.put('/blogs/view/:id', (req, res) => {
-        currentUser : req.user
         Blog.findByIdAndUpdate(req.params.id, req.body)
             .then(blog => {
                 res.redirect(`/blogs/view/${blog._id}`)
-                currentUser : req.user
             })
             .catch(err => {
                 console.log(err.message);
             })
     })
+
     app.get('/', (req, res) => {
-        currentUser : req.user
-        res.render('landingpage')
+        let currentUser = req.user
+        res.render('landingpage', {
+            currentUser
+        })
     })
 
-    app.get('/blogs', (req, res) => {
-        currentUser : req.user
-        res.render('blogs-index', {})
-        currentUser : req.user
-    })
+    // app.get('/blogs', (req, res) => {
+    //     let currentUser = req.user;
+    //     res.render('blogs-index', {
+    //         currentUser
+    //     })
+    // })
 
     /** Route for News articles
      * q: options Alternatively you can use the AND / OR / NOT keywords,
@@ -152,7 +166,7 @@ require('./auth')(app)
             // console.log(response);
             res.render('news-articles', {
                 articles: response.articles,
-                currentUser : req.user
+                currentUser: req.user
             });
         }).catch(console.error)
     });

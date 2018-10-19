@@ -1,11 +1,15 @@
 <!-- views/blogs-index.handlebars -->
 <div class="jumbotron">
+
+    <!-- <a class="btn btn-primary btn-lg btn-block" href="/blogs/new" role="button">New Community Event</a> -->
+
     {{#if currentUser}}
         <a class="btn btn-primary btn-lg btn-block" href="/blogs/new" role="button">New Community Event</a>
         {{else}}
         <a class="btn btn-primary btn-lg btn-block" href="/sign-up" role="button">New Community Event</a>
     {{/if}}
     <hr class="my-4">
+    <h1 class="blogsbillboard" style="font-style: roboto; text-align: center; color:#bd8c7d">Event Board</h1>
     {{#each blogs}}
         <h1 class="lead">
             {{this.title}}
