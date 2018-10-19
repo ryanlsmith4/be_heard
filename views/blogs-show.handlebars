@@ -4,6 +4,11 @@
     <h2>{{blog.articleTitle}}</h2>
     <p>{{blog.description}}</p>
     <p>{{blog.dropDown}}</p>
+    <h2>Comments</h2>
+    <hr>
+    {{#each blog.comments}}
+    <p>{{this.content}}</p>
+    {{/each}}
 </div>
 
     <p>
@@ -24,6 +29,13 @@
         <button type="submit" class="btn btn-primary btn-sm">Community Board</button>
     </form>
 </p>
+
+<form action="/blogs/view/{{blog.id}}/comments" method="POST">
+   <textarea class='form-control' name="content" placeholder="Comment"></textarea>
+   <div class="text-right">
+     <button type="submit">Save</button>
+   </div>
+ </form>
 
 <style>
     .nice-buttons {

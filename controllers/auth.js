@@ -21,6 +21,7 @@ module.exports = (app) => {
                 // Create User and JWT
                 const user = new User();
                 user.username = req.body.username;
+                user.email = req.body.email;
                 user.password = user.generateHash(req.body.password);
                 console.log(user);
                 user.save().then((user) => {
@@ -43,7 +44,6 @@ module.exports = (app) => {
 
       //Login logic
       app.post('/login', (req, res) => {
-          console.log(req.body);
           //Find this user name
          User.findOne({username: req.body.username }, 'username password ').then((user) => {
              console.log(user);
@@ -64,7 +64,7 @@ module.exports = (app) => {
               );
               // Set a cookie and redirect to root
               res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-              res.redirect('/');
+              res.redirect('/articles/homepage');
           }).catch((err) => {
               console.log("THERES AN ERR")
               console.log(err);

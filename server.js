@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const methodOverride = require('method-override');
 const express = require('express');
 const app = express();
@@ -7,10 +7,18 @@ const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const Blog = require('./models/blog');
+
+
 //This I required after the app = express()
 // But before all other routes because it parses the data
-app.use(bodyParser.urlencoded({ extended: true}));
+
+app.use(bodyParser.urlencoded({ extended: false}));
+//app.use(bodyParser.json())
+require('./controllers/comments-controller.js')(app);
+require('dotenv').config();
+
 app.use(cookieParser());
+
 var checkAuth = (req, res, next) => {
     console.log("checking authentication");
     if(typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {

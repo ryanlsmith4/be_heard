@@ -13,6 +13,7 @@ const year = currentDate.getFullYear();
 const dateStringLessAMonth = year + "-" + (month - 1) + "-" + date;
 const dateString = year + "-" + month + "-" + date;
 
+
 module.exports = function(app, Blog) {
 require('./auth')(app)
 
@@ -51,7 +52,8 @@ require('./auth')(app)
     });
 
     app.get('/blogs/view/:id', (req, res) => {
-        Blog.findById(req.params.id).then((blog) => {
+        currentUser : req.user
+        Blog.findById(req.params.id).populate('comments').then((blog) => {
             res.render('blogs-show', {
                 blog: blog
             })
@@ -62,6 +64,7 @@ require('./auth')(app)
 
     // Delete route in  views/blogs-show.handlebars POST method
     app.delete('/blogs/view/:id', function(req, res) {
+        currentUser : req.user
         console.log("Delete Blog");
         Blog.findByIdAndRemove(req.params.id).then((blog) => {
             res.redirect('/');
@@ -80,8 +83,9 @@ require('./auth')(app)
         })
     })
 
-    // Create New database object for a blog
+
     app.post('/blogs/view', (req, res) => {
+        currentUser : req.user
         Blog.create(req.body).then((blog) => {
             console.log(blog);
             currentUser : req.user
@@ -94,6 +98,7 @@ require('./auth')(app)
 
 
     app.put('/blogs/view/:id', (req, res) => {
+        currentUser : req.user
         Blog.findByIdAndUpdate(req.params.id, req.body)
             .then(blog => {
                 res.redirect(`/blogs/view/${blog._id}`)
@@ -102,6 +107,10 @@ require('./auth')(app)
             .catch(err => {
                 console.log(err.message);
             })
+    })
+    app.get('/', (req, res) => {
+        currentUser : req.user
+        res.render('landingpage')
     })
 
     app.get('/blogs', (req, res) => {
@@ -115,7 +124,7 @@ require('./auth')(app)
      * and optionally group these with parenthesis.
      *Eg: crypto AND (ethereum OR litecoin) NOT bitcoin.
      **/
-    app.get('/', (req, res) => {
+    app.get('/articles/homepage', (req, res) => {
         newsapi.v2.everything({
             q: '+San Francisco, +California, +politics',
             sources: 'google-news, independent, politico, reddit-r-politics',
@@ -134,7 +143,11 @@ require('./auth')(app)
             });
         }).catch(console.error)
     });
-
+    // app.get('/blogs/new', (req, res) => {
+    //     if (req.user) {
+    //         var = new Blog
+    //     }
+    // })
     // Route for a new Blog
     app.get('/blogs/new', (req, res) => {
         currentUser : req.user

@@ -31,40 +31,45 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!--This link will take you home-->
-                <a class="navbar-brand" href="/">Be Heard</a>
+                {{#if currentUser}}
+                    <a class="navbar-brand" href="/articles/homepage">Be Heard</a>
+                {{else}}
+                    <a class="navbar-brand" href="/">Be Heard</a>
+                {{/if}}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     {{#if currentUser}}
-                    <li><a href="/" class="box">logged In :) <span class="sr-only box">(current)</span></a></li>
+                        <li><a class="box">logged In :) <span class="sr-only box">(current)</span></a></li>
+
                     {{else}}
-                    <li><a href="/sign-up" class="box">Sign Up<span class="sr-only box">(current)</span></a></li>
+                        <li><a href="/sign-up" class="box">Sign Up<span class="sr-only box">(current)</span></a></li>
                     {{/if}}
-                    <li><a id="b" href="/blogs/views/world" class="box">World News <span class="sr-only box">(current)</span></a></li>
+                    <!-- {{#if currentUser}}
+                        <li><a href="/logout" class="box">Log Out<span class="sr-only box">(current)</span></a></li>
+
+                    {{else}}
+                        <li><a href="/login" class="box">Log In<span class="sr-only box">(current)</span></a></li>
+                    {{/if}} -->
+                    <li><a id="b" href="/articles/homepage" class="box">Local news<span class="sr-only box">(current)</span></a></li>
+
+                    <li><a id="b" href="/blogs/views/world" class="box">National News <span class="sr-only box">(current)</span></a></li>
 
                     <li><a id="c" href="/blogs/views/community/board" class="box">Community Board</a></li>
+                    {{#if currentUser}}
+                        <li><a href="/logout" class="box">Log Out<span class="sr-only box">(current)</span></a></li>
 
-
-                    <li class="dropdown">
-                        <a id="d" href="#" class="dropdown-toggle box" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            {{#if currentUser}}
-                                <li><a href="/logout">Log out</a></li>
-                            {{else}}
-                                <li><a href="/sign-up" class="box">Sign Up<span class="sr-only box">(current)</span></a></li>
-                                <li><a href="/login" class="box">Log In<span class="sr-only box">(current)</span></a></li>
-                            {{/if}}
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left">
+                    {{else}}
+                        <li><a href="/login" class="box">Log In<span class="sr-only box">(current)</span></a></li>
+                    {{/if}}
+                <!-- <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                </form> -->
 
 
             </div><!-- /.navbar-collapse -->
