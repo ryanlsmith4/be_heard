@@ -2,7 +2,7 @@
 //formarlly known as controllers/reviews.js
 const NewsAPI = require('newsapi');
 // import apiConfig from './config';
-const config = require('../config')
+const config = require('../.env')
 const newsapi = new NewsAPI(config.config)
 const User = require('../models/user')
 const currentDate = new Date();
