@@ -51,6 +51,6 @@ const blogs = require('./controllers/routes')(app, Blog);
 
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('App Listening on port 3000');
 });
