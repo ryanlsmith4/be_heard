@@ -8,6 +8,7 @@ var exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 //update with new MLAB URI
 const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
+// const dataBase = ' mongodb://localhost/Be_heard';
 
 // const dataBase = process.env.MONGODB_URI ||' mongodb://localhost/Be_heard';
 //     useNewUrlParser: true
