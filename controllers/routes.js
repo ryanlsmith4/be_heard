@@ -83,6 +83,18 @@ require('./auth')(app)
         })
     })
 
+    // app.get('/blogs/new', (req, res) => {
+    //     if (req.user) {
+    //         var = new Blog
+    //     }
+    // })
+    // Route for a new Blog(re,res,blogs this is working?)
+    app.get('/blogs/new', (req, res, blogs) => {
+        let currentUser = req.user;
+        // currentUser : req.user
+        res.render('blogs-new', { blogs, currentUser });
+    })
+
 
     app.post('/blogs/view', (req, res) => {
         currentUser : req.user
@@ -143,16 +155,6 @@ require('./auth')(app)
             });
         }).catch(console.error)
     });
-    // app.get('/blogs/new', (req, res) => {
-    //     if (req.user) {
-    //         var = new Blog
-    //     }
-    // })
-    // Route for a new Blog
-    app.get('/blogs/new', (req, res) => {
-        currentUser : req.user
-        res.render('blogs-new', {});
-    })
 
 
 }
