@@ -1,4 +1,5 @@
-//comment.js
+//TODO : this needs a general description of what it is doing. 
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
