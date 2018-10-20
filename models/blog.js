@@ -25,7 +25,7 @@ const BlogSchema = new Schema({
   articleTitle:  { type: String, required: true },
   zip          :   { type: Number, required: true},
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-  date: {type: Number, required: true }
+  date: {type: Date, required: true }
   // author : { type: Schema.Types.ObjectId, ref: 'User', required: true }
 
 

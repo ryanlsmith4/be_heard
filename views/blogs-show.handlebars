@@ -1,10 +1,13 @@
 <!-- views/blogs-show.handlebars -->
 <div class="">
-    <h1>{{blog.title}}</h1>
-    <h2>{{blog.date}}</h2>
-    <h2>{{blog.articleTitle}}</h2>
+    <h1>Event Title</h1>
+    <p>{{blog.title}}</p>
+    <h1>Event Date</h1>
+    <p>{{blog.date}}</p>
+    <h1>Event location via zip code</h1>
+    <p>{{blog.zip}}</p>
+    <h2>Description</h2>
     <p>{{blog.description}}</p>
-    <p>{{blog.dropDown}}</p>
     <h2>Comments</h2>
     <hr>
     {{#each blog.comments}}
