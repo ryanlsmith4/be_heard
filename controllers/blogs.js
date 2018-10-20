@@ -1,5 +1,5 @@
-//TODO : this needs a general description of what it is doing. 
-
+//TODO : this needs a general description of what it is doing.
+var debug = require('../server').debug
 var Blog = require('../models/blogs');
 
 module.exports = (app) => {

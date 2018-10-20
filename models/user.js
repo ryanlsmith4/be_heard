@@ -1,4 +1,7 @@
-//TODO : this needs a general description of what it is doing. 
+//The user model defines the schema of the user while
+// hashing the passwords and checking validity of the user entered pass
+//
+
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');

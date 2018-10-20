@@ -1,4 +1,4 @@
-//TODO : this needs a general description of what it is doing. 
+// Comment model with mongoose to direct to the DB 
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema

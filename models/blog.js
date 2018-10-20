@@ -1,23 +1,6 @@
-//TODO : this needs a general description of what it is doing. 
-
-
+// Here we use mongoose to handle the data for each blog post
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/contractor_proj', { useNewUrlParser: true});
-// const mongoose = require('mongoose');
 
-
-// const Blog = mongoose.model('Blog', {
-//     title: String,
-//     description: String,
-//     articleTitle: String,
-//     zip: Number,
-//     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
-//
-// });
-//
-// module.exports = Blog;
-
-// const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const BlogSchema = new Schema({
@@ -27,6 +10,7 @@ const BlogSchema = new Schema({
   zip          :   { type: Number, required: true},
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   date: {type: Date, required: true }
+  //TODO : Make author work when saving blogs
   // author : { type: Schema.Types.ObjectId, ref: 'User', required: true }
 
 
