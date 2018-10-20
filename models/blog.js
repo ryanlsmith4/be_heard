@@ -1,5 +1,6 @@
-//models/blog.js
-//formally know as models/review.js
+//TODO : this needs a general description of what it is doing. 
+
+
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/contractor_proj', { useNewUrlParser: true});
 // const mongoose = require('mongoose');
