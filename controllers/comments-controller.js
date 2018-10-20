@@ -1,15 +1,15 @@
+//TODO : this needs a general description of what it is doing. 
+
 const Comment = require('../models/comment')
 const Blog = require('../models/blog')
 
 module.exports = function(app) {
 
-
-
-    // CREATE Comment
+ 
     app.post('/blogs/view/:id/comments', function(req, res) {
          currentUser: req.user
         console.log(req.body)
-        // INSTANTIATE INSTANCE OF MODEL
+   
         const comment = new Comment(req.body)
         // SAVE INSTANCE OF Comment MODEL TO DB
         comment.save().then((comment) => {

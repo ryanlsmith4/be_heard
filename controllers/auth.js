@@ -1,4 +1,5 @@
 //auth.js
+//TODO : this needs a general description of what it is doing. 
 const jwt = require('jsonwebtoken');
 const User = require('../models/user')
 module.exports = (app) => {
@@ -10,7 +11,7 @@ module.exports = (app) => {
     app.get('/sign-up', (req, res) => {
         res.render('sign-up')
     });
-    // SIGN UP POST routes
+      // SIGN UP POST routes
       app.post('/sign-up', (req, res) => {
 
         User.findOne({username : req.body.username}).then((user) => {
@@ -44,14 +45,14 @@ module.exports = (app) => {
 
       //Login logic
       app.post('/login', (req, res) => {
-          //Find this user name
+         //Find this user name
          User.findOne({username: req.body.username }, 'username password ').then((user) => {
              console.log(user);
               if(!user) {
                   //user not found
                   return res.status(401).send({ message: 'User does not exist' });
               }
-          // check PASSWORD
+              // check PASSWORD
               if(!user.validPassword(req.body.password)) {
                   //Pass does not match
                   return res.status(401).send({ message: "Incorrect Password"});

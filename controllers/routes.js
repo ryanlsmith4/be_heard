@@ -1,5 +1,5 @@
-//controllers/routes.js
-//formarlly known as controllers/reviews.js
+//TODO : this needs a general description of what it is doing. 
+
 const NewsAPI = require('newsapi');
 // import apiConfig from './config';
 const config = require('../.env')
@@ -7,9 +7,9 @@ const newsapi = new NewsAPI(config.config)
 const User = require('../models/user')
 
 const currentDate = new Date();
-// Super Excellent Date tool!
+
 const date = currentDate.getDate();
-const month = currentDate.getMonth(); //Be careful! January is 0 not 1
+const month = currentDate.getMonth(); //Note - January is 0 and December is 11
 const year = currentDate.getFullYear();
 const dateStringLessAMonth = year + "-" + (month - 1) + "-" + date;
 const dateString = year + "-" + month + "-" + date;
