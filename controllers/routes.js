@@ -154,8 +154,8 @@ module.exports = function(app, Blog) {
     app.get('/articles/homepage', (req, res) => {
         newsapi.v2.everything({
             q: '+San Francisco, +California, +politics',
-            sources: 'google-news, independent, politico, reddit-r-politics',
-            domains: 'politico.com, google.com',
+            sources: 'all',
+            domains: 'all',
             from: 'dateStringLessAMonth',
             to: 'dateString',
             language: 'en',
