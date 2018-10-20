@@ -3,7 +3,3 @@ A way of associating users to neighborhoods
 Adding votes to Political News Pages & Blogs
 Incorporate Google Maps API to get zipcode to offer
 news targeted for user area
-add date of article
-Fix the appearance of being logged out going into blogs show
-then staying when pressing "Be Heard" from that route
-nToken still exist
