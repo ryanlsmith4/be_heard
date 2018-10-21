@@ -18,6 +18,7 @@ Install NPM, express, mongoDB, mongoose, and nodemon
 ## Authors
 
 * **Ryan Smith** - *Initial Work* - [be_heard](https://github.com/ryanlsmith4/be_heard)
+* **Alex Bogart**
 
 ## Acknowledgments
 
