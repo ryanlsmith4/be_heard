@@ -1,3 +1,4 @@
 #What are Models?
 
-Description here
+Schema of the database objects such as, comment, user,
+and blog
