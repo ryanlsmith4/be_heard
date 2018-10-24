@@ -15,7 +15,19 @@ const UserSchema = new Schema({
     updatedAt: {
         type: Date
     },
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
     password: {
+        type: String,
+        required: true
+    },
+    confirm_password: {
         type: String,
         required: true
     },
@@ -32,6 +44,36 @@ const UserSchema = new Schema({
         ref: 'Blog'
     }]
 });
+
+function validate(next) {
+    var password =
+    $("#password").val();
+    var confirmPassword =
+    $("#confirm_password").val()
+    if (password != confirm_password) {
+        console.log("passwords do not match");
+        $('validate-status').text("Passwords do not match")
+    } else {
+        console.log("passwords do match");
+        $('#validate-status').text("Passwords Match")
+    }
+    next();
+}
+
+// if (password != confirm_password) {
+//     console.log("passwords do not match");
+// } else {
+//
+// }
+
+// UserSchema.pre('save', function(next) {
+//     // SET createdAt AND updatedAt
+//     if (password != confirm_password) {
+//         console.log("passwords do not match");
+//     } else {
+//         next();
+//     }
+// });
 
 // Must use function here! ES6 => functions do not bind this!
 UserSchema.pre('save', function(next) {
