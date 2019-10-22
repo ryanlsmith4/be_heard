@@ -2,6 +2,9 @@
 
 <!--name="modelvalue"-->
 <div class="row">
+  <script>const dirty = document.getElementById('user-username');
+  const clean = DOMPURIFY.clean(dirty)</script>
+
     <div class="col-sm-4 col-sm-offset-4">
         <form action="/sign-up" method="POST">
             <legend>Register</legend>

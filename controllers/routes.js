@@ -158,5 +158,9 @@ module.exports = function(app, Blog) {
         }).catch(console.error)
     });
 
+    app.get('/search', (req, res) => {
+      
+    })
+
 
 }
